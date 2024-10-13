@@ -37,40 +37,60 @@ window.addEventListener('resize', function() {
 
 
 
-// Array of large image URLs
-const largeImages = [
-    'images/image-product-1.jpg',
-    'images/image-product-2.jpg',
-    'images/image-product-3.jpg',
-    'images/image-product-4.jpg'
-];
+document.addEventListener('DOMContentLoaded', function() {
+    // Array of large image URLs
+    const largeImages = [
+        'images/image-product-1.jpg',
+        'images/image-product-2.jpg',
+        'images/image-product-3.jpg',
+        'images/image-product-4.jpg'
+    ];
 
-// Track the current image index
-let currentIndex = 0;
+    // Preload all images
+    largeImages.forEach(imageUrl => {
+        const img = new Image();
+        img.src = imageUrl;
+    });
 
-// Select the main large image and the arrow buttons
-const largeImage = document.getElementById('mainImage');
-const prevArrow = document.getElementById('prevArrow');
-const nextArrow = document.getElementById('nextArrow');
+    // Track the current image index
+    let currentIndex = 0;
 
-// Function to update the main image
-function updateMainImage() {
-    largeImage.src = largeImages[currentIndex];
-}
+    // Select the main large image and the arrow buttons
+    const largeImage = document.getElementById('mainImage');
+    const prevArrow = document.getElementById('prevArrow');
+    const nextArrow = document.getElementById('nextArrow');
 
-// Add event listener to the next arrow
-nextArrow.addEventListener('click', function() {
-    // Increment the index and loop back if at the end
-    currentIndex = (currentIndex + 1) % largeImages.length;
-    updateMainImage();
+    // Function to update the main image
+    function updateMainImage() {
+        largeImage.src = largeImages[currentIndex];
+    }
+
+    // Debounce function to limit rapid clicking
+    let isThrottled = false;
+    function debounce(func, delay) {
+        return function() {
+            if (isThrottled) return;  // Ignore the function call if throttled
+            isThrottled = true;
+            func();  // Execute the function
+            setTimeout(() => isThrottled = false, delay);  // Reset throttle after delay
+        }
+    }
+
+    // Add event listener to the next arrow with debounce
+    nextArrow.addEventListener('click', debounce(function() {
+        // Increment the index and loop back if at the end
+        currentIndex = (currentIndex + 1) % largeImages.length;
+        updateMainImage();
+    }, 300));  // 300ms debounce delay
+
+    // Add event listener to the previous arrow with debounce
+    prevArrow.addEventListener('click', debounce(function() {
+        // Decrement the index and loop back if at the beginning
+        currentIndex = (currentIndex - 1 + largeImages.length) % largeImages.length;
+        updateMainImage();
+    }, 300));  // 300ms debounce delay
 });
 
-// Add event listener to the previous arrow
-prevArrow.addEventListener('click', function() {
-    // Decrement the index and loop back if at the beginning
-    currentIndex = (currentIndex - 1 + largeImages.length) % largeImages.length;
-    updateMainImage();
-});
 
 
 
