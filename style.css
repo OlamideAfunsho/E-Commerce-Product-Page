@@ -822,6 +822,9 @@ h3{
           margin-right: 3rem;
           margin-top: 0rem;
      }
+     #cart-quantity{
+          margin-right: 3px;
+     }
 
      .col-2{
           width:100%;
@@ -832,6 +835,7 @@ h3{
      }
      .header{
           font-size:2rem;
+          margin-top: 1.5rem;
      }
      .items-number img:hover{
           cursor:pointer;
@@ -839,20 +843,32 @@ h3{
      }
 }
 @media (max-width: 388px){
+     #cart-quantity{
+          margin-right: 3px;
+     }
      .basket-para{
           margin-right: 1.8rem;
           margin-top: -0.2rem;
+     }
+     .header{
+          margin-top: 1.5rem;
      }
      .col-2{
           height:85vh;
      }
 }
 @media (max-width: 380px){
+     #cart-quantity{
+          margin-right: 3px;
+     }
      .basket-para{
           margin-right: 2rem;
      }
      .col-2{
           height: 85vh;
+     }
+     .header{
+          margin-top: 1.5rem;
      }
      .old-price{
           margin-left: 6rem;
@@ -874,15 +890,24 @@ h3{
 }
 
 @media (max-width: 368px){
+     #cart-quantity{
+          margin-right: 3px;
+     }
      .basket-para{
           margin-top: -2.8rem;
      }
      .col-2{
           height: 85vh;
      }
+     .header{
+          margin-top: 1.5rem;
+     }
 }
 
 @media (max-width: 355px){
+     #cart-quantity{
+          margin-right: 3px;
+     }
      #cart-basket{
           padding-left:0.5rem;
           padding-right: 0.5rem;
@@ -890,9 +915,15 @@ h3{
      .col-2{
           height: 85vh;
      }
+     .header{
+          margin-top: 1.5rem;
+     }
 }
 
 @media (max-width: 350px){
+     #cart-quantity{
+          margin-right: 3px;
+     }
      #cart-basket{
           position:absolute;
           left:50%;
@@ -926,6 +957,9 @@ h3{
      .col-2{
           height: 85vh;
      }
+     .header{
+          margin-top: 1.5rem;
+     }
      .items-number img:hover{
           cursor:pointer;
           opacity:1;
@@ -933,11 +967,17 @@ h3{
 }
 
 @media (max-width: 322px){
+     #cart-quantity{
+          margin-right: 3px;
+     }
      .basket-para{
           margin-top: -3rem;
      }
      .col-2{
           height: 85vh;
+     }
+     .header{
+          margin-top: 1.5rem;
      }
 }
 
